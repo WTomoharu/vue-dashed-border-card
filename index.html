@@ -29,26 +29,11 @@
       <div style="margin: 0 auto; min-width: 425px; max-width: 900px; min-height: 100vh; background: white;">
         <div style="padding: 8px 0; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
 
-          <div v-for="i in 3" style="display: flex; width: 100%; max-width: 600px; padding: 8px; box-sizing: border-box; ">
-            <div style="display: flex; align-items: center;">
-              <img src="./images/metro-1853976_1920.jpg" alt="" style="height: calc(clamp(425px, 100vw, 600px) * 0.28);" />
+          <dashed-line-card v-for="i in 3" src="./images/metro-1853976_1920.jpg">
+            <div>
+              This is the West Eighth Street Station in New York Metoro.
             </div>
-
-            <div style="display: flex; flex-grow: 1;">
-              <div style="
-                display: flex; flex-direction: column; justify-content: center; 
-                padding: 8px; flex-grow: 1;
-              ">
-                <dashed-line width="16px" space="12px" height="3px" color="#a9a9a9"></dashed-line>
-                <div style="flex-grow: 1; padding: 8px 0; height: 80%; width: 100%;">
-                  <div>
-                    This is the West Eighth Street Station in New York Metoro.
-                  </div>
-                </div>
-                <dashed-line width="16px" space="12px" height="3px" color="#a9a9a9"></dashed-line>
-              </div>
-            </div>
-          </div>
+          </dashed-line-card>
 
         </div>
       </div>
@@ -56,6 +41,36 @@
 
     <script>
       const app = Vue.createApp({})
+    </script>
+
+    <template id="dashed-line-card">
+      <div style="display: flex; width: 100%; max-width: 600px; padding: 8px; box-sizing: border-box; ">
+        <div style="display: flex; align-items: center;">
+          <img :src="src" alt="" style="height: calc(clamp(425px, 100vw, 600px) * 0.28);" />
+        </div>
+
+        <div style="display: flex; flex-grow: 1;">
+          <div style="
+            display: flex; flex-direction: column; justify-content: center; 
+            padding: 8px; flex-grow: 1;
+          ">
+            <dashed-line width="16px" space="12px" height="3px" color="#a9a9a9"></dashed-line>
+            <div style="flex-grow: 1; padding: 8px 0; height: 80%; width: 100%;">
+              <slot></slot>
+            </div>
+            <dashed-line width="16px" space="12px" height="3px" color="#a9a9a9"></dashed-line>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <script>
+      app.component('dashed-line-card', {
+        template: document.getElementById("dashed-line-card").innerHTML,
+        props: {
+          src: String
+        }
+      })
     </script>
 
     <template id="dashed-line">
