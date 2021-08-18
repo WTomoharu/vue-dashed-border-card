@@ -26,21 +26,21 @@
 <body>
   <div id="app">
     <div style="background-color: whitesmoke;">
-      <div style="margin: 0 auto; min-width: 425px; max-width: 1000px; min-height: 100vh; background: white;">
-        <div style="padding: 16px 0; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+      <div style="margin: 0 auto; min-width: 425px; max-width: 900px; min-height: 100vh; background: white;">
+        <div style="padding: 8px 0; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
 
-          <div v-for="i in 3" style="display: flex; width: full; max-width: 800px; margin: 16px;">
-            <div>
-              <img src="./images/metro-1853976_1920.jpg" alt="" style="max-height: 200px;">
+          <div v-for="i in 3" style="display: flex; width: 100%; max-width: 600px; padding: 8px; box-sizing: border-box; ">
+            <div style="display: flex; align-items: center;">
+              <img src="./images/metro-1853976_1920.jpg" alt="" style="height: calc(clamp(425px, 100vw, 600px) * 0.28);" />
             </div>
 
-            <div style="display: flex; flex-grow: 1; font-size: 1.2em;">
+            <div style="display: flex; flex-grow: 1;">
               <div style="
-                  display: flex; flex-direction: column; justify-content: center; 
-                  padding: 8px; flex-grow: 1;
-                ">
+                display: flex; flex-direction: column; justify-content: center; 
+                padding: 8px; flex-grow: 1;
+              ">
                 <dashed-line width="16px" space="12px" height="3px" color="#a9a9a9"></dashed-line>
-                <div style="flex-grow: 1; padding: 8px 0; height: 80%;">
+                <div style="flex-grow: 1; padding: 8px 0; height: 80%; width: 100%;">
                   <div>
                     This is the West Eighth Street Station in New York Metoro.
                   </div>
