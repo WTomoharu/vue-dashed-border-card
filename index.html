@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://unpkg.com/vue@next"></script>
+
+  <title>Document</title>
+
+  <style>
+    html,
+    body {
+      margin: 0px;
+      padding: 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div style="background-color: whitesmoke;">
+      <div style="margin: 0 auto; max-width: 1000px; min-height: 100vh; background: white;">
+        <div style="padding: 16px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+
+          <div v-for="i in 3">
+            <div style="display: flex; width: 800px; max-height: 200px; margin: 16px;">
+              <div>
+                <img src="./images/metro-1853976_1920.jpg" alt="" style="max-height: 200px;">
+              </div>
+
+              <div style="display: flex; flex-grow: 1; font-size: 1.2em;">
+                <div style="
+                  display: flex; flex-direction: column; justify-content: center; 
+                  padding: 8px; flex-grow: 1;
+                ">
+                  <dashed-line width="16px" space="12px" height="3px" color="#a9a9a9"></dashed-line>
+                  <div style="flex-grow: 1; padding: 8px 0; height: 80%;">
+                    <div>
+                      This is the West Eighth Street Station in New York Metoro.
+                    </div>
+                  </div>
+                  <dashed-line width="16px" space="12px" height="3px" color="#a9a9a9"></dashed-line>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const app = Vue.createApp({})
+    </script>
+
+    <template id="dashed-line">
+      <div :style="style"></div>
+    </template>
+
+    <script>
+      app.component('dashed-line', {
+        template: document.getElementById("dashed-line").innerHTML,
+
+        props: {
+          height: String,
+          width: String,
+          space: String,
+          color: String,
+        },
+
+        computed: {
+          style() {
+            return `
+              /* 全体の幅・高さを設定 */
+              width: 100%; height: ${this.height};
+              /* 線の幅を設定 */
+              background-image: linear-gradient(
+                to right, ${this.color}, ${this.color} ${this.width},
+                transparent ${this.width}, transparent ${this.width}
+              );
+              /* 空白を含めた幅・高さを指定 */
+              background-size: calc(${this.width} + ${this.space}) ${this.height};
+              /* 背景の開始位置を指定 */
+              background-position: left bottom;
+              /* 横向きにのみ繰り返す */
+              background-repeat: repeat-x;
+            `
+          }
+        }
+      })
+    </script>
+
+
+
+
+    <!-- <a href="https://pixabay.com/ja/users/pexels-2286921/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1853976">Pexels</a>による<a href="https://pixabay.com/ja/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1853976">Pixabay</a>からの画像 -->
+  </div>
+
+
+  <script>
+    app.mount('#app')
+  </script>
+</body>
+
+</html>
